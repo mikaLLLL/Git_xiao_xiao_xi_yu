@@ -1,4 +1,4 @@
-# dsh-thinkflux — 实时 AI 思考可视化
+# THINKFLUX · 实时思考光环
 
 把 [HALOFLUX](https://github.com/Ryder191/haloflux) 的光环引擎改造成 **DeepSeek Harness 的思考监视器**：
 模型每吐出一段 `reasoning-delta`，环带上的面板就换成那段真实思考文字；环的闪动、光束脉冲和镜头

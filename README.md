@@ -1,6 +1,8 @@
-# Git_xiao_xiao_xi_yu
+# THINKFLUX · 实时思考光环
 
-小西鱼的仓库。里面装着 **dsh-thinkflux** —— 把 HALOFLUX 的光环引擎改造成 DeepSeek Harness 的**实时思考可视化**插件：模型每吐一段 `reasoning-delta`，光环面板就换成那段真实思考文字。
+**THINKFLUX**（包名 `dsh-thinkflux`）—— 把 HALOFLUX 的光环引擎改造成 DeepSeek Harness 的**实时思考可视化**插件：模型每吐一段 `reasoning-delta`，光环面板就换成那段真实思考文字。
+
+小西鱼的仓库，同时也是这个插件的源码与发行页。
 
 ## 仓库结构
 
