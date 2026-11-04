@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "THINKFLUX · 实时思考光环",
+    "description": "实时 AI 思考可视化：模型一边想，环带面板一边换成 reasoning-delta 的真实文字；HUD 显示思考字数、字/秒、step/turn、上下文与工具调度。自带设置页（全部参数 + 三档数据：纯动画 / 混合 / 只看思考）。"
+  }
+}

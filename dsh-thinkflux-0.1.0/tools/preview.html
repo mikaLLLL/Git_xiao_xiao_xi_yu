@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>THINKFLUX preview</title>
+<style>html,body{margin:0;height:100%;background:#08090b;overflow:hidden}canvas{display:block;width:100vw;height:100vh}</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="../src/engine.js"></script>
+<script>
+const SENTENCE = '先确认事件流里有没有 reasoning-delta，然后把每个增量切成短语，贴到环带的面板上。环上的字必须跟着模型此刻的思考走，而不是跟着音乐节拍随机闪。工具调用和 step 切换单独触发脉冲，让画面能看出"想完了、开始动手"这个转折。';
+const live = {
+  sessionPresent: true, running: true, activity: 0.85, tps: 26,
+  totalTokens: 0, thinkingChars: 0, thinkingRate: 0,
+  recentThoughtText: '', recentThoughts: [], thoughtQueue: [],
+  step: 2, turn: 1, model: 'deepseek-flash', contextTokens: 12480, contextLimit: 128000,
+  tools: [{ id: 't1', name: 'read', state: 'ok' }, { id: 't2', name: 'grep', state: 'ok' }, { id: 't3', name: 'edit', state: 'running' }],
+  get thinking() { return true; },
+  pullThoughts(max) { return this.thoughtQueue.splice(0, max); },
+  pullTokens() { return []; },
+};
+let i = 0, phrase = '';
+function step() {
+  if (i >= SENTENCE.length) i = 0;
+  const n = 2 + (Math.random() * 3 | 0);
+  const add = SENTENCE.slice(i, i + n); i += n;
+  live.thinkingChars += add.length;
+  live.thinkingRate = 30;
+  live.recentThoughtText += add;
+  if (live.recentThoughtText.length > 240) live.recentThoughtText = live.recentThoughtText.slice(-240);
+  phrase += add;
+  while (phrase.length >= 10) { live.thoughtQueue.push(phrase.slice(0, 10)); phrase = phrase.slice(10); }
+  setTimeout(step, 120);
+}
+step();
+const canvas = document.getElementById('c');
+const params = Object.assign({}, ThinkfluxEngine.BASE, ThinkfluxEngine.PRESETS.MINE, {
+  dataMode: 2, hudOn: 0, opacity: 1, backdrop: 0, camera: 0, idleMotion: 0, runLevel: 1,
+  scale: 0.6, centerX: -0.15, centerY: 0,
+});
+const engine = ThinkfluxEngine.create({ canvas, live, params, onStats: () => {} });
+engine.start();
+window.__engine = engine;
+</script>
+</body>
+</html>

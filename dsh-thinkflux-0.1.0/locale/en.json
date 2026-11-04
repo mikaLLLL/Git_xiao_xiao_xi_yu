@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "THINKFLUX — Live Thought Ring",
+    "description": "Real-time AI-thinking visualisation: reasoning-delta phrases rewrite the light-ring panels while the model thinks, with think chars/s, step/turn, context and tool dispatch in the HUD. Ships a Settings page with every parameter and a three-level data dial (animation only / mixed / thinking only)."
+  }
+}
